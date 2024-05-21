@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Market Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        canvas {
+            width: 800px;
+            height: 400px;
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div>
+            <canvas id="stockPriceChart"></canvas>
+            <div class="chart-title">Stock Prices Over Time</div>
+            <div class="chart-title">Edona Gurina</div>
+        </div>
+        <div>
+            <canvas id="tradingVolumeChart"></canvas>
+            <div class="chart-title">Trading Volumes Over Time</div>
+            <div class="chart-title">Edona Gurina</div>
+        </div>
+    </div>
+
+    <script>
+        var stockPriceData = {
+            labels: ["Jan 2019", "Jan 2020", "Jan 2021", "Jan 2022", "Jan 2023", "Jan 2024"],
+            datasets: [
+                {
+                    label: 'Apple Inc. Stock Price (USD)',
+                    data: [157.74, 293.65, 132.69, 169.25, 165.52, 150.12],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Microsoft Corporation Stock Price (USD)',
+                    data: [101.12, 163.34, 234.51, 276.97, 292.77, 287.48],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }
+            ]
+        };
+
+        var stockPriceOptions = {
+            responsive: false,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            }
+        };
+
+        var tradingVolumeData = {
+            labels: ["Jan 2019", "Jan 2020", "Jan 2021", "Jan 2022", "Jan 2023", "Jan 2024"],
+            datasets: [
+                {
+                    label: 'Apple Inc. Trading Volume (Millions)',
+                    data: [400, 500, 300, 350, 400, 450],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Microsoft Corporation Trading Volume (Millions)',
+                    data: [300, 400, 250, 300, 350, 400],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        var tradingVolumeOptions = {
+            responsive: false,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        };
+
+        var ctx1 = document.getElementById('stockPriceChart').getContext('2d');
+        var stockPriceChart = new Chart(ctx1, {
+            type: 'line',
+            data: stockPriceData,
+            options: stockPriceOptions
+        });
+
+        var ctx2 = document.getElementById('tradingVolumeChart').getContext('2d');
+        var tradingVolumeChart = new Chart(ctx2, {
+            type: 'bar',
+            data: tradingVolumeData,
+            options: tradingVolumeOptions
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
